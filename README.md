@@ -36,6 +36,16 @@ Node attributes for this cookbook are logically separated into different files. 
 ### default
 Generally used attributes. Some have platform specific values. See `attributes/default.rb`. "The Config" refers to "nginx.conf" the main config file.
 
+## default.rb
+
+Generally used attributes. Some have platform specific values. See
+`attributes/default.rb`. "The Config" refers to "nginx.conf" the main
+config file.
+
+**v0.101.0 - Attribute Change**: `node['nginx']['url']` is now
+  `node['nginx']['source']['url']` as the URL was only used when
+  retrieving the source to build Nginx.
+
 - `node['nginx']['dir']` - Location for Nginx configuration.
 - `node['nginx']['log_dir']` - Location for Nginx logs.
 - `node['nginx']['user']` - User that Nginx will run as.
@@ -169,7 +179,7 @@ for default values.
 
 - `node['nginx']['source']['url']` - (versioned) URL for the Nginx
   source code. By default this will use the version specified as
-  `node['nginx']['version'].
+  `node['nginx']['version']`.
 - `node['nginx']['source']['prefix']` - (versioned) prefix for
   installing nginx from source
 - `node['nginx']['source']['conf_path']` - location of the main config
@@ -320,6 +330,7 @@ include this recipe directly.  Instead, add it to the
 `node['nginx']['default']['modules']` array (see below).
 
 ### ohai_plugin
+
 This recipe provides an Ohai plugin as a template. It is included by
 both the `default` and `source` recipes.
 
