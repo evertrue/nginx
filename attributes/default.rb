@@ -26,6 +26,7 @@
 # default['nginx']['source']['checksum']
 default['nginx']['version'] = "1.2.6"
 default['nginx']['package_name'] = "nginx"
+default['nginx']['port'] = "8080"
 default['nginx']['dir'] = "/etc/nginx"
 default['nginx']['log_dir'] = "/var/log/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"
@@ -87,3 +88,5 @@ default['nginx']['types_hash_bucket_size'] = 64
 
 default['nginx']['proxy_read_timeout'] = nil
 default['nginx']['client_max_body_size'] = nil
+
+default['nginx']['default']['modules'] = []
