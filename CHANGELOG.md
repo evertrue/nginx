@@ -1,3 +1,11 @@
+## v1.7.2
+
+- [COOK-????]: new socketproxy module template format
+
+## v1.7.1
+
+- [COOK-????]: create "socketproxy" module
+
 ## v1.7.0
 
 ### Improvement
