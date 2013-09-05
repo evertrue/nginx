@@ -1,3 +1,7 @@
+## v1.7.3
+
+- [COOK-????]: socketproxy support for tcp sockets
+
 ## v1.7.2
 
 - [COOK-????]: new socketproxy module template format
