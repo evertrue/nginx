@@ -29,51 +29,7 @@
       return 405;
     }
 
-    <% node['nginx']['socketproxy']['apps'].each do |app,app_conf| -%>
-
-    location ~ "^/<%= app_conf['context_name'] %>/assets/(.*/)*.*-[0-9a-f]{32}.*" {
-      gzip_static on;
-      expires     max;
-      add_header  Cache-Control public;
-    }
-
-    location ^~ /<%= app_conf['context_name'] %> {
-
-      alias $app_home/<%= app %>/<%= app_conf['subdir'] %>/public;
-
-      try_files $uri/index.html $uri.html $uri @app_<%= app %>;
-      error_page 404              /404.html;
-      error_page 422              /422.html;
-      error_page 500 502 503 504  /500.html;
-      error_page 403              /403.html;
-
-    }
-
-    location @app_<%= app %> {
-
-      proxy_read_timeout 600;
-      <%
-        if app_conf['socket']['type']
-          case app_conf['socket']['type']
-          when 'unix'
-      -%>
-      proxy_pass http://unix:$app_home/<%= app %>/<%= app_conf['socket']['path'] %><% if app_conf['prepend_slash'] %>:/<% end %>;
-      <%
-          when 'tcp'
-      -%>
-      proxy_pass http://localhost:<%= app_conf['socket']['port'] -%>;
-      <%
-          end
-        else
-      -%>
-      proxy_pass http://unix:$app_home/<%= app %>/<%= app_conf['socket_path'] %><% if app_conf['prepend_slash'] %>:/<% end %>;
-      <%
-        end
-      -%>
-
-    }
-
-    <% end # node['nginx']['socketproxy']['apps'].each -%>
+    include <%= node['nginx']['dir'] %>/rails_apps/*.conf;
 
     error_page 500 502 504 /50x.html;
     location = /50x.html {
