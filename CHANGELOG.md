@@ -1,3 +1,9 @@
+## v1.7.4
+
+- [COOK-????]: Allow PATCH HTTP method
+- Add Gemfile w/ Test Kitchen, Berkshelf, Kitchen Vagrant
+- Tweak .gitignore to ignore more files
+
 ## v1.7.3
 
 - [COOK-????]: socketproxy support for tcp sockets
