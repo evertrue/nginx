@@ -8,6 +8,7 @@ end
 group :unit do
   gem 'berkshelf', '~> 3.0.0.beta7'
   gem 'chefspec',  '~> 3.1'
+  gem 'serverspec' '~> 1.4'
 end
 
 group :kitchen_common do
