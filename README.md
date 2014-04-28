@@ -50,6 +50,7 @@ config file.
 - `node['nginx']['log_dir']` - Location for Nginx logs.
 - `node['nginx']['user']` - User that Nginx will run as.
 - `node['nginx']['group]` - Group for Nginx.
+- `node['nginx']['port']` - Port for nginx to listen on.
 - `node['nginx']['binary']` - Path to the Nginx binary.
 - `node['nginx']['init_style']` - How to run Nginx as a service when
   using `nginx::source`. Values can be "runit", "upstart", "init" or
