@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-include_attribute 'nginx::default'
+include_attribute 'et_nginx::default'
 
 default['nginx']['source']['version']                 = node['nginx']['version']
 default['nginx']['source']['prefix']                  = "/opt/nginx-#{node['nginx']['source']['version']}"

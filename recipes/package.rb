@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-include_recipe 'nginx::ohai_plugin'
+include_recipe 'et_nginx::ohai_plugin'
 
 execute 'apt-get-update' do
   command 'apt-get update'
@@ -29,7 +29,7 @@ if platform_family?('rhel')
   if node['nginx']['repo_source'] == 'epel'
     include_recipe 'yum-epel'
   elsif node['nginx']['repo_source'] == 'nginx'
-    include_recipe 'nginx::repo'
+    include_recipe 'et_nginx::repo'
   elsif node['nginx']['repo_source'].nil?
     log "node['nginx']['repo_source'] was not set, no additional yum repositories will be installed." do
       level :debug
@@ -38,7 +38,7 @@ if platform_family?('rhel')
     fail ArgumentError, "Unknown value '#{node['nginx']['repo_source']}' was passed to the nginx cookbook."
   end
 elsif platform_family?('debian')
-  include_recipe 'nginx::repo' if node['nginx']['repo_source'] == 'nginx'
+  include_recipe 'et_nginx::repo' if node['nginx']['repo_source'] == 'nginx'
 end
 
 package node['nginx']['package_name'] do
@@ -50,4 +50,4 @@ service 'nginx' do
   action   :enable
 end
 
-include_recipe 'nginx::commons'
+include_recipe 'et_nginx::commons'
