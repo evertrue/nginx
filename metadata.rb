@@ -1,9 +1,9 @@
-name              'nginx'
-maintainer        'Opscode, Inc.'
-maintainer_email  'cookbooks@opscode.com'
+name              'et_nginx'
+maintainer        'EverTrue, Inc.'
+maintainer_email  'devops@evertrue.com'
 license           'Apache 2.0'
 description       'Installs and configures nginx'
-version           '2.7.1'
+version           '1.0.1'
 
 recipe 'nginx',         'Installs nginx package and sets up configuration with Debian apache style with sites-enabled/sites-available'
 recipe 'nginx::source', 'Installs nginx from source and sets up configuration with Debian apache style with sites-enabled/sites-available'
