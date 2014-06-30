@@ -2,6 +2,11 @@ et_nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the et_nginx cookbook.
 
+v2.0.2 (2014-06-30)
+-------------------
+-- Merge in [upstream v2.7.4](https://github.com/miketheman/nginx/releases/tag/v2.7.4)
+-- Merge in RuboCop fixes
+
 v2.0.1 (2014-05-29)
 -------------------
 -- [COOK-4688] - Make log level configurable through attributes (and stop debug logging)
