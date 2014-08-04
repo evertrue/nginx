@@ -2,6 +2,10 @@ et_nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the et_nginx cookbook.
 
+v2.0.3 (2014-08-04)
+-------------------
+-- Fix socketproxy nginx config assets location
+
 v2.0.2 (2014-06-30)
 -------------------
 -- Merge in [upstream v2.7.4](https://github.com/miketheman/nginx/releases/tag/v2.7.4)
