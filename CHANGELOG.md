@@ -2,6 +2,10 @@ et_nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the et_nginx cookbook.
 
+v2.0.4 (2014-08-11)
+-------------------
+-- Fix issue with path for root location for socketproxy config
+
 v2.0.3 (2014-08-04)
 -------------------
 -- Fix socketproxy nginx config assets location
