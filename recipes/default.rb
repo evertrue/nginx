@@ -21,10 +21,7 @@
 
 include_recipe "et_nginx::#{node['nginx']['install_method']}"
 
-service 'nginx' do
-  supports :status => true, :restart => true, :reload => true
-  action   :start
-end
+resources(:service => 'nginx').action :start
 
 node['nginx']['default']['modules'].each do |ngx_module|
   include_recipe "et_nginx::#{ngx_module}"
