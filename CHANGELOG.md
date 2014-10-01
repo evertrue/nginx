@@ -2,6 +2,16 @@ et_nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the et_nginx cookbook.
 
+v2.0.5 (2014-10-01)
+-------------------
+-- Call up previously defined service resource to avoid cloning
+-- Switch to release version of berkshelf
+-- Remove /var/log/nginx directory during install
+-- Notify existing apt-get update resource instead of defining a new one
+-- Notify existing nginx start resource instead of defining a duplicate resource
+-- s/nginx/et_nginx/g in test kitchen run lists
+-- Add ServerSpec test suites
+
 v2.0.4 (2014-08-11)
 -------------------
 -- Fix issue with path for root location for socketproxy config
