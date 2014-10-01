@@ -21,7 +21,10 @@
 
 include_recipe "et_nginx::#{node['nginx']['install_method']}"
 
-resources(:service => 'nginx').action :start
+ruby_block 'start nginx' do
+  block {}
+  notifies :start, 'service[nginx]'
+end
 
 node['nginx']['default']['modules'].each do |ngx_module|
   include_recipe "et_nginx::#{ngx_module}"
