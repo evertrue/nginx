@@ -48,6 +48,13 @@ package node['nginx']['package_name'] do
   not_if 'which nginx'
 end
 
+# The nginx package creates this directory regardless.  It should be removed
+# if we aren't going to use it.
+directory '/var/log/nginx' do
+  action :delete
+  not_if { node['nginx']['log_dir'] == '/var/log/nginx' }
+end
+
 service 'nginx' do
   supports :status => true, :restart => true, :reload => true
   action   :enable
