@@ -20,11 +20,6 @@
 
 include_recipe 'et_nginx::ohai_plugin'
 
-execute 'apt-get-update' do
-  command 'apt-get update'
-  action  :nothing
-end.run_action(:run)
-
 if platform_family?('rhel')
   if node['nginx']['repo_source'] == 'epel'
     include_recipe 'yum-epel'
