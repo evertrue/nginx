@@ -47,7 +47,7 @@ end
 # if we aren't going to use it.
 directory '/var/log/nginx' do
   action :delete
-  not_if { node['nginx']['log_dir'] == '/var/log/nginx' }
+  not_if { node['nginx']['log_dir'] == '/var/log/nginx' || File.symlink?('/var/log/nginx') }
 end
 
 service 'nginx' do
