@@ -2,6 +2,12 @@ et_nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the et_nginx cookbook.
 
+v2.0.6 (2014-10-06)
+-------------------
+-- Add actual Serverspec tests
+-- Clean up Gemfile
+-- Add additional guard to removal of `/var/log/nginx` to avoid failures due to `et_rails_app::default` installing a symlink at that path
+
 v2.0.5 (2014-10-01)
 -------------------
 -- Call up previously defined service resource to avoid cloning
