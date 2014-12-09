@@ -1,6 +1,8 @@
 nginx Cookbook
 ==============
-[![Build Status](https://secure.travis-ci.org/opscode-cookbooks/nginx.png?branch=master)](http://travis-ci.org/opscode-cookbooks/nginx)
+[![Cookbook](http://img.shields.io/cookbook/v/nginx.svg)](https://github.com/miketheman/nginx)
+[![Build Status](https://travis-ci.org/miketheman/nginx.svg?branch=master)](https://travis-ci.org/miketheman/nginx)
+[![Gitter chat](https://img.shields.io/badge/Gitter-miketheman%2Fnginx-brightgreen.svg)](https://gitter.im/miketheman/nginx)
 
 Installs nginx from package OR source code and sets up configuration handling similar to Debian's Apache2 scripts.
 
@@ -446,9 +448,10 @@ License & Authors
 - Author:: Adam Jacob (<adam@opscode.com>)
 - Author:: AJ Christensen (<aj@opscode.com>)
 - Author:: Jamie Winsor (<jamie@vialstudios.com>)
+- Author:: Mike Fiedler (<miketheman@gmail.com>)
 
 ```text
-Copyright 2008-2013, Opscode, Inc
+Copyright 2008-2014, Opscode, Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

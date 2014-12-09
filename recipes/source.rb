@@ -26,7 +26,7 @@
 node.load_attribute_by_short_filename('source', 'nginx') if node.respond_to?(:load_attribute_by_short_filename)
 
 nginx_url = node['nginx']['source']['url'] ||
-  "http://nginx.org/download/nginx-#{node['nginx']['source']['version']}.tar.gz"
+            "http://nginx.org/download/nginx-#{node['nginx']['source']['version']}.tar.gz"
 
 node.set['nginx']['binary']          = node['nginx']['source']['sbin_path']
 node.set['nginx']['daemon_disable']  = true
@@ -75,6 +75,9 @@ cookbook_file "#{node['nginx']['dir']}/mime.types" do
   mode   '0644'
   notifies :reload, 'service[nginx]'
 end
+
+# source install depends on the existence of the `tar` package
+package 'tar'
 
 # Unpack downloaded source so we could apply nginx patches
 # in custom modules - example http://yaoweibin.github.io/nginx_tcp_proxy_module/
@@ -165,14 +168,14 @@ else
 
   case node['platform']
   when 'gentoo'
-    genrate_template = false
+    generate_template = false
   when 'debian', 'ubuntu'
-    genrate_template = true
+    generate_template = true
     defaults_path    = '/etc/default/nginx'
   when 'freebsd'
     generate_init    = false
   else
-    genrate_template = true
+    generate_template = true
     defaults_path    = '/etc/sysconfig/nginx'
   end
 
@@ -183,7 +186,7 @@ else
     mode   '0755'
   end if generate_init
 
-  if genrate_template
+  if generate_template
     template defaults_path do
       source 'nginx.sysconfig.erb'
       owner  'root'
