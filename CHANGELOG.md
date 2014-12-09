@@ -2,8 +2,12 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
-v2.7.5 (Unreleased)
+v2.0.6 (2014-10-06)
 -------------------
+-- Add actual Serverspec tests
+-- Clean up Gemfile
+-- Add additional guard to removal of `/var/log/nginx` to avoid failures due to `et_rails_app::default` installing a symlink at that path
+
 * Fix nginx 1.4.4 archive checksum to prevent redownload, [#305][] [@irontoby][]
 * Allow setting an empty string to prevent additional repos, [#243][] [@miketheman][]
 * Use correct `mime.types` for javascript, [#259][] [@dwradcliffe][]
