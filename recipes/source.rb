@@ -34,7 +34,7 @@ node.set['nginx']['daemon_disable']  = true
 unless node['nginx']['source']['use_existing_user']
   user node['nginx']['user'] do
     system true
-    shell  '/bin/false'
+    shell  '/usr/sbin/nologin'
     home   '/var/www'
   end
 end
