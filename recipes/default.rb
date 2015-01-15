@@ -19,6 +19,21 @@
 # limitations under the License.
 #
 
+unless node['nginx']['source']['use_existing_user']
+  user node['nginx']['user'] do
+    system true
+    shell  '/usr/sbin/nologin'
+    home   '/var/www'
+  end
+end
+
+directory node['nginx']['log_dir'] do
+  mode      '0755'
+  owner     node['nginx']['user']
+  action    :create
+  recursive true
+end
+
 include_recipe "et_nginx::#{node['nginx']['install_method']}"
 
 ruby_block 'start nginx' do

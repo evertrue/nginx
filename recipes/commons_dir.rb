@@ -26,13 +26,6 @@ directory node['nginx']['dir'] do
   recursive true
 end
 
-directory node['nginx']['log_dir'] do
-  mode      '0755'
-  owner     node['nginx']['user']
-  action    :create
-  recursive true
-end
-
 directory File.dirname(node['nginx']['pid']) do
   owner     'root'
   group     node['root_group']

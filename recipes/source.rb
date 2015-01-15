@@ -31,14 +31,6 @@ nginx_url = node['nginx']['source']['url'] ||
 node.set['nginx']['binary']          = node['nginx']['source']['sbin_path']
 node.set['nginx']['daemon_disable']  = true
 
-unless node['nginx']['source']['use_existing_user']
-  user node['nginx']['user'] do
-    system true
-    shell  '/usr/sbin/nologin'
-    home   '/var/www'
-  end
-end
-
 include_recipe 'et_nginx::ohai_plugin'
 include_recipe 'et_nginx::commons_dir'
 include_recipe 'et_nginx::commons_script'

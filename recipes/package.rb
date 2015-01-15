@@ -37,6 +37,14 @@ elsif platform_family?('debian')
   include_recipe 'et_nginx::repo' if node['nginx']['repo_source'] == 'nginx'
 end
 
+link '/var/log/nginx' do
+  to node['nginx']['log_dir']
+  not_if do
+    node['nginx']['log_dir'] == '/var/log/nginx' ||
+      File.symlink?('/var/log/nginx')
+  end
+end
+
 package node['nginx']['package_name'] do
   options package_install_opts
   notifies :reload, 'ohai[reload_nginx]', :immediately
