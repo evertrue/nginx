@@ -12,97 +12,56 @@ provisioner:
   require_chef_omnibus: latest
 
 platforms:
-- name: centos-5.8
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 1601
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-
-- name: centos-6.4
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 562354
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-
-- name: amazon-2013.09
+- name: amazon-ubuntu-1404
   driver_plugin: ec2
   driver_config:
-    image_id: ami-3be4bc52
-    username: ec2-user
+    image_id: ami-44e9752c
+    username: ubuntu
     ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
-
-- name: fedora-19
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 3102879
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-
-- name: ubuntu-1004
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 14097
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
-  run_list:
-  - recipe[apt]
-
-- name: ubuntu-1204
-  driver_plugin: digitalocean
-  driver_config:
-    image_id: 3101045
-    flavor_id: 63
-    region_id: 4
-    ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
-    ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
+    interface: public
+    flavor_id: c3.large
+    security_group_ids: ['ci-testing']
   run_list:
   - recipe[apt]
 
 suites:
   - name: default
     run_list:
-      - recipe[nginx::default]
+      - recipe[et_nginx::default]
+    attributes:
+      nginx:
+        log_dir: /tmp/nginx_log
   - name: source
     run_list:
-      - recipe[nginx::default]
+      - recipe[et_nginx::default]
     attributes:
       nginx:
         install_method: source
   - name: upstream_repo
     run_list:
-      - recipe[nginx::repo]
-      - recipe[nginx::default]
+      - recipe[et_nginx::repo]
+      - recipe[et_nginx::default]
     attributes:
       nginx:
         repo_source: nginx
   - name: modules
     run_list:
-      - recipe[nginx::source]
+      - recipe[et_nginx::source]
     attributes:
       nginx:
         source:
           modules:
-            - nginx::headers_more_module
-            - nginx::http_auth_request_module
-            - nginx::http_echo_module
-            - nginx::http_geoip_module
-            - nginx::http_gzip_static_module
-            - nginx::http_realip_module
-            - nginx::http_spdy_module
-            - nginx::http_ssl_module
-            - nginx::http_stub_status_module
-            - nginx::naxsi_module
-            - nginx::ngx_devel_module
-            - nginx::ngx_lua_module
-            - nginx::openssl_source
-            - nginx::upload_progress_module
+            - et_nginx::headers_more_module
+            - et_nginx::http_auth_request_module
+            - et_nginx::http_echo_module
+            - et_nginx::http_geoip_module
+            - et_nginx::http_gzip_static_module
+            - et_nginx::http_realip_module
+            - et_nginx::http_spdy_module
+            - et_nginx::http_ssl_module
+            - et_nginx::http_stub_status_module
+            - et_nginx::naxsi_module
+            - et_nginx::ngx_devel_module
+            - et_nginx::ngx_lua_module
+            - et_nginx::openssl_source
+            - et_nginx::upload_progress_module
