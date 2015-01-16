@@ -2,8 +2,20 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
-v2.0.6 (2014-10-06)
--------------------
+et-v3.0.0 (2015-01-16)
+----------------------
+
+* *BREAKING:* Use access_log_options attribute to set options for socketproxy access log (instead of assuming "main") - Fixes #308
+* Add a policy-rc.d file on Debian systems to prevent the nginx service from starting when the package installs
+* Lets only test on the system we actually use here at ET: amazon with ubuntu-1404
+* Use et_nginx as the cookbook name in kitchen YAML instead of nginx
+* Move log directory creation to before package install (and add user ourselves to support it instead of waiting for the package to add it)
+* Stop deleting incorrect nginx log directory
+* Serverspec tests should check for port 8080 (not 80)
+* nginx user should use nologin binary instead of `/bin/false`
+
+et-v2.0.6 (2014-10-06)
+----------------------
 -- Add actual Serverspec tests
 -- Clean up Gemfile
 -- Add additional guard to removal of `/var/log/nginx` to avoid failures due to `et_rails_app::default` installing a symlink at that path
