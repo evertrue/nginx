@@ -48,11 +48,12 @@ EOF
   end
 end
 
-link '/var/log/nginx' do
-  to node['nginx']['log_dir']
-  not_if do
-    node['nginx']['log_dir'] == '/var/log/nginx' ||
-      File.symlink?('/var/log/nginx')
+Chef::Log.debug "Value of log_dir: #{node['nginx']['log_dir']}"
+
+unless node['nginx']['log_dir'] == '/var/log/nginx' ||
+       File.symlink?('/var/log/nginx')
+  link '/var/log/nginx' do
+    to node['nginx']['log_dir']
   end
 end
 
