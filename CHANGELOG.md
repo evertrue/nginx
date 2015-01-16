@@ -2,6 +2,11 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v3.0.1 (2015-01-16)
+----------------------
+
+* Use compile-time "unless" instead of not_if to decide whether or not to make a symlink for the log directory
+
 et-v3.0.0 (2015-01-16)
 ----------------------
 
