@@ -1,10 +1,11 @@
+
 #
 # Cookbook Name:: nginx
-# Attributes:: headers_more
+# Attributes:: syslog
 #
-# Author:: Lucas Jandrew (<ljandrew@riotgames.com>)
+# Author:: Bob Ziuchkovski (<bob@bz-technology.com>)
 #
-# Copyright 2012-2013, Riot Games
+# Copyright 2014, UserTesting
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +20,5 @@
 # limitations under the License.
 #
 
-default['nginx']['headers_more']['version']         = '0.25'
-default['nginx']['headers_more']['source_url']      = "https://github.com/openresty/headers-more-nginx-module/archive/v#{node['nginx']['headers_more']['version']}.tar.gz"
-default['nginx']['headers_more']['source_checksum'] = '1473f96f59dcec9d83ce65d691559993c1f80da8c0a4c0c0a30dae9f969eeabf'
+default['nginx']['syslog']['git_repo']     = 'https://github.com/yaoweibin/nginx_syslog_patch.git'
+default['nginx']['syslog']['git_revision'] = 'master'

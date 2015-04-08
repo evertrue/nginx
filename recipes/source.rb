@@ -2,11 +2,11 @@
 # Cookbook Name:: nginx
 # Recipe:: source
 #
-# Author:: Adam Jacob (<adam@opscode.com>)
-# Author:: Joshua Timberman (<joshua@opscode.com>)
+# Author:: Adam Jacob (<adam@chef.io>)
+# Author:: Joshua Timberman (<joshua@chef.io>)
 # Author:: Jamie Winsor (<jamie@vialstudios.com>)
 #
-# Copyright 2009-2013, Opscode, Inc.
+# Copyright 2009-2013, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ include_recipe 'build-essential::default'
 
 src_filepath  = "#{Chef::Config['file_cache_path'] || '/tmp'}/nginx-#{node['nginx']['source']['version']}.tar.gz"
 packages = value_for_platform_family(
-  %w(rhel fedora) => %w(pcre-devel openssl-devel),
+  %w(rhel fedora suse) => %w(pcre-devel openssl-devel),
   %w(gentoo)      => [],
   %w(default)     => %w(libpcre3 libpcre3-dev libssl-dev)
 )
@@ -65,7 +65,7 @@ cookbook_file "#{node['nginx']['dir']}/mime.types" do
   owner  'root'
   group  node['root_group']
   mode   '0644'
-  notifies :reload, 'service[nginx]'
+  notifies :reload, 'service[nginx]', :delayed
 end
 
 # source install depends on the existence of the `tar` package
