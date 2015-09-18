@@ -15,7 +15,7 @@ platforms:
 - name: amazon-ubuntu-1404
   driver_plugin: ec2
   driver_config:
-    image_id: ami-44e9752c
+    image_id: ami-bbef47d0
     username: ubuntu
     ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
     interface: public
