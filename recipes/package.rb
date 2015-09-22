@@ -60,6 +60,7 @@ end
 
 package node['nginx']['package_name'] do
   options package_install_opts
+  version node['nginx']['version']
   notifies :reload, 'ohai[reload_nginx]', :immediately
   not_if 'which nginx'
 end
