@@ -1,11 +1,15 @@
 ---
-driver_config:
-  digitalocean_client_id: <%= ENV['DIGITAL_OCEAN_CLIENT_ID'] %>
-  digitalocean_api_key: <%= ENV['DIGITAL_OCEAN_API_KEY'] %>
-  aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-  aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+driver:
+  name: ec2
   aws_ssh_key_id: <%= ENV['AWS_KEYPAIR_NAME'] %>
   availability_zone: <%= ENV['AWS_AVAILABILITY_ZONE'] %>
+  instance_type: c3.large
+  security_group_ids: ['ci-testing']
+  interface: public
+
+transport:
+  username: ubuntu
+  ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
 
 provisioner:
   name: chef_zero
@@ -13,14 +17,8 @@ provisioner:
 
 platforms:
 - name: amazon-ubuntu-1404
-  driver_plugin: ec2
-  driver_config:
+  driver:
     image_id: ami-bbef47d0
-    username: ubuntu
-    ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
-    interface: public
-    flavor_id: c3.large
-    security_group_ids: ['ci-testing']
   run_list:
   - recipe[apt]
 
