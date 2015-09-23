@@ -25,30 +25,26 @@
 # deterministically (resolved in Chef 11).
 node.load_attribute_by_short_filename('source', 'nginx') if node.respond_to?(:load_attribute_by_short_filename)
 
-nginx_url = node['nginx']['source']['url'] ||
-            "http://nginx.org/download/nginx-#{node['nginx']['version']}.tar.gz"
-
-node.set['nginx']['binary']          = node['nginx']['source']['sbin_path']
-node.set['nginx']['daemon_disable']  = true
+node.set['nginx']['daemon_disable'] = true
 
 include_recipe 'et_nginx::ohai_plugin'
 include_recipe 'et_nginx::commons_dir'
 include_recipe 'et_nginx::commons_script'
 include_recipe 'build-essential::default'
 
-src_filepath  = "#{Chef::Config['file_cache_path'] || '/tmp'}/nginx-#{node['nginx']['version']}.tar.gz"
-packages = value_for_platform_family(
+value_for_platform_family(
   %w(rhel fedora suse) => %w(pcre-devel openssl-devel),
   %w(gentoo)      => [],
   %w(default)     => %w(libpcre3 libpcre3-dev libssl-dev)
-)
-
-packages.each do |name|
+).each do |name|
   package name
 end
 
-remote_file nginx_url do
-  source   nginx_url
+src_filepath = "#{Chef::Config[:file_cache_path]}" \
+               "/nginx-#{node['nginx']['version']}.tar.gz"
+
+remote_file node['nginx']['source']['url'] do
+  source   node['nginx']['source']['url']
   checksum node['nginx']['source']['checksum']
   path     src_filepath
   backup   false

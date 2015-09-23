@@ -23,11 +23,11 @@ include_attribute 'et_nginx::default'
 
 default['nginx']['source']['prefix']                  = "/opt/nginx-#{node['nginx']['version']}"
 default['nginx']['source']['conf_path']               = "#{node['nginx']['dir']}/nginx.conf"
-default['nginx']['source']['sbin_path']               = "#{node['nginx']['source']['prefix']}/sbin/nginx"
+default['nginx']['binary']                            = "#{node['nginx']['source']['prefix']}/sbin/nginx"
 default['nginx']['source']['default_configure_flags'] = %W(
   --prefix=#{node['nginx']['source']['prefix']}
-  --conf-path=#{node['nginx']['dir']}/nginx.conf
-  --sbin-path=#{node['nginx']['source']['sbin_path']}
+  --conf-path=#{node['nginx']['source']['conf_path']}
+  --sbin-path=#{node['nginx']['binary']}
 )
 
 default['nginx']['configure_flags']    = []
