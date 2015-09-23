@@ -19,10 +19,10 @@
 # limitations under the License.
 #
 
-nginx_src = "#{Chef::Config['file_cache_path']}/nginx-#{node['nginx']['source']['version']}"
+nginx_src = "#{Chef::Config['file_cache_path']}/nginx-#{node['nginx']['version']}"
 nginx_syslog_src = "#{Chef::Config['file_cache_path']}/nginx_syslog_module"
 
-major, minor, patch = node['nginx']['source']['version'].split('.').map { |s| Integer(s) }
+major, minor, patch = node['nginx']['version'].split('.').map { |s| Integer(s) }
 fail 'Unsupported nginx version' if major != 1
 case minor
 when 2

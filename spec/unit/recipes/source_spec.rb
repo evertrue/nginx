@@ -8,7 +8,7 @@ describe 'nginx::source' do
   before do
     stub_command('which nginx').and_return(nil)
 
-    @ngx_version = chef_run.node['nginx']['source']['version']
+    @ngx_version = chef_run.node['nginx']['version']
   end
 
   it 'creates nginx user' do

@@ -17,7 +17,6 @@
 #
 
 provides "nginx"
-provides "nginx/version"
 provides "nginx/configure_arguments"
 provides "nginx/prefix"
 provides "nginx/conf_path"
@@ -39,7 +38,6 @@ def parse_flags(flags)
 end
 
 nginx Mash.new unless nginx
-nginx[:version]             = nil unless nginx[:version]
 nginx[:configure_arguments] = Array.new unless nginx[:configure_arguments]
 nginx[:prefix]              = nil unless nginx[:prefix]
 nginx[:conf_path]           = nil unless nginx[:conf_path]
@@ -59,8 +57,6 @@ if status == 0
 
       nginx[:prefix] = prefix
       nginx[:conf_path] = conf_path
-    when /^nginx version: nginx\/(\d+\.\d+\.\d+)/
-      nginx[:version] = $1
     end
   end
 end

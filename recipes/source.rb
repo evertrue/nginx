@@ -26,7 +26,7 @@
 node.load_attribute_by_short_filename('source', 'nginx') if node.respond_to?(:load_attribute_by_short_filename)
 
 nginx_url = node['nginx']['source']['url'] ||
-            "http://nginx.org/download/nginx-#{node['nginx']['source']['version']}.tar.gz"
+            "http://nginx.org/download/nginx-#{node['nginx']['version']}.tar.gz"
 
 node.set['nginx']['binary']          = node['nginx']['source']['sbin_path']
 node.set['nginx']['daemon_disable']  = true
@@ -36,7 +36,7 @@ include_recipe 'et_nginx::commons_dir'
 include_recipe 'et_nginx::commons_script'
 include_recipe 'build-essential::default'
 
-src_filepath  = "#{Chef::Config['file_cache_path'] || '/tmp'}/nginx-#{node['nginx']['source']['version']}.tar.gz"
+src_filepath  = "#{Chef::Config['file_cache_path'] || '/tmp'}/nginx-#{node['nginx']['version']}.tar.gz"
 packages = value_for_platform_family(
   %w(rhel fedora suse) => %w(pcre-devel openssl-devel),
   %w(gentoo)      => [],
@@ -79,7 +79,7 @@ bash 'unarchive_source' do
   code <<-EOH
     tar zxf #{::File.basename(src_filepath)} -C #{::File.dirname(src_filepath)}
   EOH
-  not_if { ::File.directory?("#{Chef::Config['file_cache_path'] || '/tmp'}/nginx-#{node['nginx']['source']['version']}") }
+  not_if { ::File.directory?("#{Chef::Config['file_cache_path'] || '/tmp'}/nginx-#{node['nginx']['version']}") }
 end
 
 node['nginx']['source']['modules'].each do |ngx_module|
@@ -92,7 +92,7 @@ nginx_force_recompile = node.run_state['nginx_force_recompile']
 bash 'compile_nginx_source' do
   cwd  ::File.dirname(src_filepath)
   code <<-EOH
-    cd nginx-#{node['nginx']['source']['version']} &&
+    cd nginx-#{node['nginx']['version']} &&
     ./configure #{node.run_state['nginx_configure_flags'].join(' ')} &&
     make && make install
   EOH
@@ -100,7 +100,6 @@ bash 'compile_nginx_source' do
   not_if do
     nginx_force_recompile == false &&
       node.automatic_attrs['nginx'] &&
-      node.automatic_attrs['nginx']['version'] == node['nginx']['source']['version'] &&
       node.automatic_attrs['nginx']['configure_arguments'].sort == configure_flags.sort
   end
 
