@@ -24,7 +24,6 @@
 # This attribute is in the source.rb file, though we recommend overriding
 # attributes by modifying a role, or the node itself.
 default['nginx']['version']      = '1.4.6-2evertrue1.0'
-default['nginx']['package_name'] = 'nginx'
 default['nginx']['port']         = '80'
 default['nginx']['dir']          = '/etc/nginx'
 default['nginx']['script_dir']   = '/usr/sbin'
