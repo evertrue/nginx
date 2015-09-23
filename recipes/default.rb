@@ -41,6 +41,6 @@ ruby_block 'start nginx' do
   notifies :start, 'service[nginx]'
 end
 
-node['nginx']['default']['modules'].each do |ngx_module|
+node['nginx']['modules'].each do |ngx_module|
   include_recipe "et_nginx::#{ngx_module}"
 end

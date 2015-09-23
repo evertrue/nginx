@@ -47,29 +47,9 @@ suites:
       - recipe[et_nginx::default]
     attributes:
       nginx:
-        install_method: source
-        source:
-          modules:
-            - et_nginx::upstream_check_module
-  - name: modules
-    run_list:
-      - recipe[et_nginx::source]
-    attributes:
-      nginx:
-        source:
-          modules:
-            - et_nginx::headers_more_module
-            - et_nginx::http_auth_request_module
-            - et_nginx::http_echo_module
-            - et_nginx::http_geoip_module
-            - et_nginx::http_gzip_static_module
-            - et_nginx::http_realip_module
-            - et_nginx::http_spdy_module
-            - et_nginx::http_ssl_module
-            - et_nginx::http_stub_status_module
-            - et_nginx::naxsi_module
-            - et_nginx::ngx_devel_module
-            - et_nginx::ngx_lua_module
-            - et_nginx::openssl_source
-            - et_nginx::upload_progress_module
-            - et_nginx::upstream_check_module
+        modules:
+        - et_nginx::module_http_geoip
+        - et_nginx::module_http_gzip_static
+        - et_nginx::module_http_realip
+        - et_nginx::module_naxsi
+        - et_nginx::module_upload_progress

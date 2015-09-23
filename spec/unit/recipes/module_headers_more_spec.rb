@@ -3,7 +3,7 @@
 describe 'nginx::headers_more_module' do
   cached(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
-      node.set['nginx']['source']['modules'] = ['nginx::headers_more_module']
+      node.set['nginx']['modules'] = ['nginx::module_headers_more']
     end.converge(described_recipe)
   end
 

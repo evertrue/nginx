@@ -21,7 +21,7 @@ describe 'nginx::default' do
     end
 
     it 'does not include a module recipe' do
-      expect(chef_run).to_not include_recipe('http_stub_status_module')
+      expect(chef_run).to_not include_recipe('module_http_stub_status')
     end
 
     it_behaves_like 'default recipe'
@@ -40,10 +40,10 @@ describe 'nginx::default' do
 
   context 'installs modules based on attributes' do
     it 'includes a module recipe when specified' do
-      chef_run.node.set['nginx']['default']['modules'] = ['http_ssl_module']
+      chef_run.node.set['nginx']['modules'] = ['module_http_ssl']
       chef_run.converge(described_recipe)
 
-      expect(chef_run).to include_recipe('nginx::http_ssl_module')
+      expect(chef_run).to include_recipe('nginx::module_http_ssl')
     end
   end
 end
