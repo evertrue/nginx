@@ -33,10 +33,9 @@ when 'debian'
 
   apt_repository 'nginx' do
     uri          node['nginx']['upstream_repository']
-    distribution node['lsb']['codename']
-    components   %w(nginx)
-    deb_src      true
-    key          'http://nginx.org/keys/nginx_signing.key'
+    distribution 'stable'
+    components   %w(main)
+    key          'http://ops.evertrue.com.s3.amazonaws.com/debian-repo/evertrue.key'
   end
 
   ruby_block 're-run apt-get update' do

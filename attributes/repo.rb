@@ -31,5 +31,5 @@ when 'rhel', 'fedora'
     default['nginx']['upstream_repository'] = "http://nginx.org/packages/rhel/#{node['platform_version'].to_i}/$basearch/"
   end
 when 'debian'
-  default['nginx']['upstream_repository'] = "http://nginx.org/packages/#{node['platform']}"
+  default['nginx']['upstream_repository'] = 'http://s3.amazonaws.com/ops.evertrue.com/debian-repo'
 end
