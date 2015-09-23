@@ -33,6 +33,3 @@ template "#{node['nginx']['dir']}/conf.d/http_realip.conf" do
   mode   '0644'
   notifies :reload, 'service[nginx]', :delayed
 end
-
-node.run_state['nginx_configure_flags'] =
-  node.run_state['nginx_configure_flags'] | ['--with-http_realip_module']

@@ -21,12 +21,6 @@ suites:
   - name: default
     run_list:
       - recipe[et_nginx::default]
-  - name: source
-    run_list:
-      - recipe[et_nginx::default]
-    attributes:
-      nginx:
-        install_method: source
   - name: upstream_repo
     run_list:
       - recipe[et_nginx::repo]
@@ -36,7 +30,7 @@ suites:
         repo_source: nginx
   - name: modules
     run_list:
-      - recipe[et_nginx::source]
+      - recipe[et_nginx::default]
     attributes:
       nginx:
         modules:

@@ -34,7 +34,7 @@ directory node['nginx']['log_dir'] do
   recursive true
 end
 
-include_recipe "et_nginx::#{node['nginx']['install_method']}"
+include_recipe 'et_nginx::package'
 
 ruby_block 'start nginx' do
   block {}

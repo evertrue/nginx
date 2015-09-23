@@ -25,29 +25,6 @@ country_src_filepath = "#{Chef::Config['file_cache_path']}/#{country_src_filenam
 city_dat             = nil
 city_src_filename    = ::File.basename(node['nginx']['geoip']['city_dat_url'])
 city_src_filepath    = "#{Chef::Config['file_cache_path']}/#{city_src_filename}"
-geolib_filename      = ::File.basename(node['nginx']['geoip']['lib_url'])
-geolib_filepath      = "#{Chef::Config['file_cache_path']}/#{geolib_filename}"
-
-remote_file geolib_filepath do
-  source   node['nginx']['geoip']['lib_url']
-  checksum node['nginx']['geoip']['lib_checksum']
-  owner    'root'
-  group    node['root_group']
-  mode     '0644'
-end
-
-bash 'extract_geolib' do
-  cwd  ::File.dirname(geolib_filepath)
-  code <<-EOH
-    tar xzvf #{geolib_filepath} -C #{::File.dirname(geolib_filepath)}
-    cd GeoIP-#{node['nginx']['geoip']['lib_version']}
-    ./configure
-    make && make install
-  EOH
-  environment('echo' => 'echo') if node['platform_family'] == 'rhel' && node['platform_version'].to_f < 6
-  creates    "/usr/local/lib/libGeoIP.so.#{node['nginx']['geoip']['lib_version']}"
-  subscribes :run, "remote_file[#{geolib_filepath}]"
-end
 
 directory node['nginx']['geoip']['path'] do
   owner     'root'
@@ -76,7 +53,7 @@ bash 'gunzip_geo_lite_country_dat' do
 end
 
 if node['nginx']['geoip']['enable_city']
-  city_dat  = "#{node['nginx']['geoip']['path']}/GeoLiteCity.dat"
+  city_dat = "#{node['nginx']['geoip']['path']}/GeoLiteCity.dat"
 
   remote_file city_src_filepath do
     not_if do
@@ -108,6 +85,3 @@ template "#{node['nginx']['dir']}/conf.d/http_geoip.conf" do
     :city_dat => city_dat
   )
 end
-
-node.run_state['nginx_configure_flags'] =
-  node.run_state['nginx_configure_flags'] | ['--with-http_geoip_module', "--with-ld-opt='-Wl,-R,/usr/local/lib -L /usr/local/lib'"]

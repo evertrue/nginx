@@ -29,12 +29,6 @@ suites:
     attributes:
       nginx:
         log_dir: /tmp/nginx_log
-  - name: source
-    run_list:
-      - recipe[et_nginx::default]
-    attributes:
-      nginx:
-        install_method: source
   - name: upstream_repo
     run_list:
       - recipe[et_nginx::repo]
@@ -42,7 +36,7 @@ suites:
     attributes:
       nginx:
         repo_source: nginx
-  - name: upstream_check_module
+  - name: modules
     run_list:
       - recipe[et_nginx::default]
     attributes:

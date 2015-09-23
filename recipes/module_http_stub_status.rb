@@ -31,6 +31,3 @@ template 'nginx_status' do
 end
 
 nginx_site 'nginx_status'
-
-node.run_state['nginx_configure_flags'] =
-  node.run_state['nginx_configure_flags'] | ['--with-http_stub_status_module']

@@ -5,11 +5,9 @@ license           'Apache 2.0'
 description       'Installs and configures nginx'
 version           '4.0.0'
 
-recipe 'nginx',         'Installs nginx package and sets up configuration with Debian apache style with sites-enabled/sites-available'
-recipe 'nginx::source', 'Installs nginx from source and sets up configuration with Debian apache style with sites-enabled/sites-available'
+recipe 'nginx', 'Installs nginx package and sets up configuration with Debian apache style with sites-enabled/sites-available'
 
 depends 'apt',             '~> 2.2'
-depends 'build-essential', '~> 2.0'
 depends 'ohai',            '~> 2.0'
 depends 'yum-epel',        '~> 0.3'
 

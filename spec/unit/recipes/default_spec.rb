@@ -27,17 +27,6 @@ describe 'nginx::default' do
     it_behaves_like 'default recipe'
   end
 
-  context 'source install set' do
-    it 'includes the source recipe' do
-      chef_run.node.set['nginx']['install_method'] = 'source'
-      chef_run.converge(described_recipe)
-
-      expect(chef_run).to include_recipe('nginx::source')
-    end
-
-    it_behaves_like 'default recipe'
-  end
-
   context 'installs modules based on attributes' do
     it 'includes a module recipe when specified' do
       chef_run.node.set['nginx']['modules'] = ['module_http_ssl']
