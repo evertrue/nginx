@@ -19,12 +19,10 @@
 # limitations under the License.
 #
 
-unless node['nginx']['source']['use_existing_user']
-  user node['nginx']['user'] do
-    system true
-    shell  '/usr/sbin/nologin'
-    home   '/var/www'
-  end
+user node['nginx']['user'] do
+  system true
+  shell  '/usr/sbin/nologin'
+  home   '/var/www'
 end
 
 directory node['nginx']['log_dir'] do
