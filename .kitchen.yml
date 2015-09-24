@@ -34,8 +34,9 @@ suites:
     attributes:
       nginx:
         modules:
-          - et_nginx::module_http_geoip
-          - et_nginx::module_http_gzip_static
-          - et_nginx::module_http_realip
-          - et_nginx::module_naxsi
-          - et_nginx::module_upload_progress
+        - et_nginx::module_http_geoip
+        - et_nginx::module_http_gzip_static
+        - et_nginx::module_http_realip
+        - et_nginx::module_naxsi
+        - et_nginx::module_upload_progress
+        - et_nginx::module_socketproxy

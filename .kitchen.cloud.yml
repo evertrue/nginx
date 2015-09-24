@@ -47,3 +47,4 @@ suites:
         - et_nginx::module_http_realip
         - et_nginx::module_naxsi
         - et_nginx::module_upload_progress
+        - et_nginx::module_socketproxy
