@@ -10,7 +10,6 @@ describe 'et_nginx::module_http_geoip' do
   it 'retrieves remote files to cache' do
     geoip_version = chef_run.node.attributes['nginx']['geoip']['lib_version']
 
-    expect(chef_run).to create_remote_file("#{Chef::Config['file_cache_path']}/GeoIP-#{geoip_version}.tar.gz")
     expect(chef_run).to create_remote_file("#{Chef::Config['file_cache_path']}/GeoIP.dat.gz")
     expect(chef_run).to create_remote_file("#{Chef::Config['file_cache_path']}/GeoLiteCity.dat.gz")
   end
@@ -20,7 +19,6 @@ describe 'et_nginx::module_http_geoip' do
   end
 
   it 'expands the retrieved files' do
-    expect(chef_run).to run_bash('extract_geolib')
     expect(chef_run).to run_bash('gunzip_geo_lite_country_dat')
     expect(chef_run).to run_bash('gunzip_geo_lite_city_dat')
   end
