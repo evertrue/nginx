@@ -42,7 +42,6 @@ unless node['nginx']['log_dir'] == '/var/log/nginx' ||
 end
 
 package node['nginx']['package']['name'] do
-  options package_install_opts
   version node['nginx']['version']
   notifies :reload, 'ohai[reload_nginx]', :immediately
 end
