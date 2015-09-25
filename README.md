@@ -1,25 +1,7 @@
 nginx Cookbook
 ==============
-[![Cookbook](http://img.shields.io/cookbook/v/nginx.svg)](https://github.com/miketheman/nginx)
-[![Build Status](https://travis-ci.org/miketheman/nginx.svg?branch=master)](https://travis-ci.org/miketheman/nginx)
-[![Gitter chat](https://img.shields.io/badge/Gitter-miketheman%2Fnginx-brightgreen.svg)](https://gitter.im/miketheman/nginx)
 
-Installs nginx from package and sets up configuration handling similar to Debian's Apache2 scripts.
-
-# READ THIS FIRST
-
-After having struggled with the cookbook format and the interfaces being brittle, the maintainers have decided to begin rewriting the core implmenetation of the nginx cookbook from the ground up, to allow for better flexibility, testability and maintianability.
-
-To this end, we request that you not open new issues for the existing codebase.
-
-Pull requests for bugs will be merged, any obvious optimizations and clarifications will be merged, and a 2.7.5 release will be shipped, and we will focus on writing the 3.0.0 version.
-
-Thank you for your help on this front!
-
--- The Maintainers
-
----
-
+Installs nginx from package and sets up configuration handling.
 
 Requirements
 ------------
@@ -343,6 +325,11 @@ recipes, or default.
 
 License & Authors
 -----------------
+### Current Maintainers
+- Author:: Eric Herot (<eric.herot@evertrue.com>)
+- Author:: Jeff Byrnes (<jeff@evertrue.com>)
+
+### Original Authors
 - Author:: Joshua Timberman (<joshua@chef.io>)
 - Author:: Adam Jacob (<adam@chef.io>)
 - Author:: AJ Christensen (<aj@chef.io>)
@@ -350,6 +337,7 @@ License & Authors
 - Author:: Mike Fiedler (<miketheman@gmail.com>)
 
 ```text
+Copyright 2014-2015, EverTrue, Inc and
 Copyright 2008-2014, Chef Software, Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
