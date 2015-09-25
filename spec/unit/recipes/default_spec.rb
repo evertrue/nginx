@@ -26,7 +26,7 @@ describe 'et_nginx::default' do
 
   context 'installs modules based on attributes' do
     it 'includes a module recipe when specified' do
-      chef_run.node.set['nginx']['modules'] = ['module_http_ssl']
+      chef_run.node.set['nginx']['modules'] = ['module_http_geoip']
       chef_run.converge(described_recipe)
 
       expect(chef_run).to include_recipe('et_nginx::module_http_geoip')
