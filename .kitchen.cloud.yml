@@ -34,6 +34,9 @@ suites:
       - recipe[et_nginx::default]
     attributes:
       nginx:
+        socketproxy:
+          apps:
+            test-app: {}
         modules:
         - module_http_geoip
         - module_http_gzip_static
