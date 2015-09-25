@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-describe 'nginx::http_geoip_module' do
+describe 'et_nginx::http_geoip_module' do
   cached(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
-      node.set['nginx']['modules'] = ['nginx::http_geoip_module']
+      node.set['nginx']['modules'] = ['et_nginx::http_geoip_module']
     end.converge(described_recipe)
   end
 

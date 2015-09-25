@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-describe 'nginx::ohai_plugin' do
+describe 'et_nginx::ohai_plugin' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end

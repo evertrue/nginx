@@ -9,7 +9,7 @@ end
 
 if !node['nginx']['socketproxy']['apps'] ||
   node['nginx']['socketproxy']['apps'] == {}
-  fail 'nginx::socketproxy requires that at least one applicatinon be defined'
+  fail 'et_nginx::socketproxy requires that at least one applicatinon be defined'
 elsif node['nginx']['socketproxy']['apps'].count < 2
   node.set['nginx']['socketproxy']['default_app'] =
     node['nginx']['socketproxy']['apps'].keys.first
