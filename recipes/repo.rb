@@ -18,28 +18,16 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'rhel', 'fedora'
+include_recipe 'apt::default'
 
-  yum_repository 'nginx' do
-    description 'Nginx.org Repository'
-    baseurl         node['nginx']['upstream_repository']
-    gpgkey      'http://nginx.org/keys/nginx_signing.key'
-    action :create
-  end
+apt_repository 'nginx' do
+  uri          node['nginx']['upstream_repository']
+  distribution 'stable'
+  components   %w(main)
+  key          'http://ops.evertrue.com.s3.amazonaws.com/debian-repo/evertrue.key'
+end
 
-when 'debian'
-  include_recipe 'apt::default'
-
-  apt_repository 'nginx' do
-    uri          node['nginx']['upstream_repository']
-    distribution 'stable'
-    components   %w(main)
-    key          'http://ops.evertrue.com.s3.amazonaws.com/debian-repo/evertrue.key'
-  end
-
-  ruby_block 're-run apt-get update' do
-    block {}
-    notifies :run, 'execute[apt-get update]'
-  end
+ruby_block 're-run apt-get update' do
+  block {}
+  notifies :run, 'execute[apt-get update]'
 end

@@ -19,33 +19,17 @@
 #
 
 include_recipe 'et_nginx::ohai_plugin'
+include_recipe 'et_nginx::repo'
 
-if platform_family?('rhel')
-  if node['nginx']['repo_source'] == 'epel'
-    include_recipe 'yum-epel'
-  elsif node['nginx']['repo_source'] == 'nginx'
-    include_recipe 'et_nginx::repo'
-    package_install_opts = '--disablerepo=* --enablerepo=nginx'
-  elsif node['nginx']['repo_source'].to_s.empty?
-    log "node['nginx']['repo_source'] was not set, no additional yum repositories will be installed." do
-      level :debug
-    end
-  else
-    fail ArgumentError, "Unknown value '#{node['nginx']['repo_source']}' was passed to the nginx cookbook."
-  end
-elsif platform_family?('debian')
-  include_recipe 'et_nginx::repo'
-
-  file '/usr/sbin/policy-rc.d' do
-    mode    '0755'
-    owner   'root'
-    group   'root'
-    content <<-EOF
+file '/usr/sbin/policy-rc.d' do
+  mode    '0755'
+  owner   'root'
+  group   'root'
+  content <<-EOF
 #!/bin/sh
 echo "All runlevel operations denied by policy" >&2
 exit 101
 EOF
-  end
 end
 
 Chef::Log.debug "Value of log_dir: #{node['nginx']['log_dir']}"

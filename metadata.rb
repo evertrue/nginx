@@ -10,13 +10,6 @@ recipe 'nginx', 'Installs nginx package and sets up configuration with ' \
 
 depends 'apt',             '~> 2.2'
 depends 'ohai',            '~> 2.0'
-depends 'yum-epel',        '~> 0.3'
 
-supports 'amazon'
-supports 'centos'
 supports 'debian'
-supports 'fedora'
-supports 'oracle'
-supports 'redhat'
-supports 'scientific'
 supports 'ubuntu'

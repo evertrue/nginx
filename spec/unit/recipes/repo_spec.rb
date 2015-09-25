@@ -14,24 +14,4 @@ describe 'nginx::repo' do
       expect(chef_run).to add_apt_repository('nginx')
     end
   end
-
-  context 'Rhel' do
-    let(:chef_run) do
-      ChefSpec::SoloRunner.new(:platform => 'centos', :version => '6.5').converge(described_recipe)
-    end
-
-    it 'adds yum repository' do
-      expect(chef_run).to create_yum_repository('nginx')
-    end
-  end
-
-  context 'Fedora' do
-    let(:chef_run) do
-      ChefSpec::SoloRunner.new(:platform => 'fedora', :version => '20').converge(described_recipe)
-    end
-
-    it 'adds yum repository' do
-      expect(chef_run).to create_yum_repository('nginx')
-    end
-  end
 end

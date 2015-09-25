@@ -30,17 +30,15 @@ The following cookbooks are direct dependencies because they're used for common 
 
 The following cookbook is not a strict dependency because its use can be controlled by an attribute, so it may not be a common "default."
 
-- On RHEL family distros, the "yum" cookbook is required for `recipe[yum::epel]`.
-- On Ubuntu, when using Nginx.org's stable package, `recipe[apt::default]` is required.
+- When using Nginx.org's stable package, `recipe[apt::default]` is required.
 
 
 ### Platforms
 The following platforms are supported and tested under test kitchen:
 
-- Ubuntu 10.04, Ubuntu 12.04
-- CentOS 5.8, 6.3
+- Ubuntu 14.04
 
-Other Debian and RHEL family distributions are assumed to work.
+Other Debian family distributions are assumed to work.
 
 
 Attributes
@@ -126,8 +124,8 @@ config file.
   size of a client request, as indicated by the request header Content-Length.
 - `node['nginx']['repo_source']` - when installed from a package this attribute affects
   which yum repositories, if any, will be added before installing the nginx package. The
-  default value of 'epel' will use the `yum::epel` recipe, 'nginx' will use the
-  `nginx::repo` recipe, 'passenger' will use the 'nginx::repo_passenger' recipe, and setting no value will not add any additional repositories.
+  default value of 'nginx' will use the
+  `nginx::repo` recipe, and setting no value will not add any additional repositories.
 * `node['nginx']['sts_max_age']` - Enable Strict Transport Security for all apps (See: http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security).  This attribute adds the following header:
 
   Strict-Transport-Security max-age=SECONDS
