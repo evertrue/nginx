@@ -35,7 +35,7 @@ describe 'et_nginx::package' do
 
   shared_examples_for 'package resource' do
     it 'installs the nginx package' do
-      expect(chef_run).to install_package('nginx')
+      expect(chef_run).to install_package('nginx-full')
     end
   end
 
