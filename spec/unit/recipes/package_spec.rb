@@ -49,16 +49,5 @@ describe 'et_nginx::package' do
       it_behaves_like 'all platforms'
       it_behaves_like 'package resource'
     end
-
-    context 'modified attributes' do
-      before do
-        chef_run.node.set['nginx']['repo_source'] = 'nginx'
-        chef_run.converge(described_recipe)
-      end
-
-      it_behaves_like 'all platforms'
-      it_behaves_like 'nginx repo'
-      it_behaves_like 'package resource'
-    end
   end
 end

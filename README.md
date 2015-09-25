@@ -104,10 +104,6 @@ config file.
   `client_body_buffer_size`.
 - `node['nginx']['client_max_body_size']` - specifies the maximum accepted body
   size of a client request, as indicated by the request header Content-Length.
-- `node['nginx']['repo_source']` - when installed from a package this attribute affects
-  which yum repositories, if any, will be added before installing the nginx package. The
-  default value of 'nginx' will use the
-  `nginx::repo` recipe, and setting no value will not add any additional repositories.
 * `node['nginx']['sts_max_age']` - Enable Strict Transport Security for all apps (See: http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security).  This attribute adds the following header:
 
   Strict-Transport-Security max-age=SECONDS
@@ -224,7 +220,6 @@ These attributes are used in the `nginx::passenger` recipe.
   use (default=nil)
 
 Basic configuration to use the official Phusion Passenger repositories:
-- `node['nginx']['repo_source']` - 'passenger'
 - `node['nginx']['package_name']` - 'nginx-extras'
 - `node['nginx']['passenger']['install_method']` - 'package'
 
