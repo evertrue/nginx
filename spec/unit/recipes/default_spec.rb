@@ -10,9 +10,6 @@ describe 'et_nginx::default' do
   end
 
   shared_examples_for 'default recipe' do
-    it 'starts the service' do
-      expect(chef_run).to start_service('nginx')
-    end
   end
 
   context 'unmodified attributes' do
