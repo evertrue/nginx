@@ -25,5 +25,4 @@ suites:
         - module_http_geoip
         - module_http_gzip_static
         - module_http_realip
-        - module_upload_progress
         - module_socketproxy
