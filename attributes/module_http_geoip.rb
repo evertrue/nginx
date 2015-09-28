@@ -22,6 +22,6 @@
 default['nginx']['geoip']['path']                 = '/srv/geoip'
 default['nginx']['geoip']['enable_city']          = true
 default['nginx']['geoip']['country_dat_url']      = 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz'
-default['nginx']['geoip']['country_dat_checksum'] = '79ff1099e96c2dc1c2539c9a18aaa13a9afd085cae477df60d95f1644d42bc07'
+default['nginx']['geoip']['country_dat_checksum'] = 'c03b4b8e10d67626fb3cd67cb338d186ce49273be60519dc4ad2ff073437bb87'
 default['nginx']['geoip']['city_dat_url']         = 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz'
-default['nginx']['geoip']['city_dat_checksum']    = '8a6467033a528f68b1a97de24d9d0ce86c8e8e83683820e16e433ddbd3f712f7'
+default['nginx']['geoip']['city_dat_checksum']    = '2a997dc1043f3872b756af2276b0910ff460bd97803224fa6cdbda4882d131ce'
