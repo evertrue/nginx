@@ -9,7 +9,7 @@ end
 
 # FIXME: This will not sustain a version update
 describe command('/usr/sbin/nginx -V') do
-  its(:stdout) { should match(/--with-http_geoip_module/) }
+  its(:stderr) { should match(/--with-http_geoip_module/) }
 end
 
 describe service('nginx') do
