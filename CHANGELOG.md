@@ -2,6 +2,11 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v4.0.0 (2015-04-08)
+----------------------
+
+* Switch to using regular expressions for location matching on socketproxy (POTENTIALLY BREAKING)
+
 et-v3.0.1 (2015-01-16)
 ----------------------
 
