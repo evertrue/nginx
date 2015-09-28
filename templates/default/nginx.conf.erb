@@ -24,10 +24,6 @@ events {
 }
 
 http {
-  <% if node.recipe?('nginx::naxsi_module') %>
-  include       <%= node['nginx']['dir'] %>/naxsi_core.rules;
-  <% end %>
-
   log_format main '$remote_addr - $remote_user [$time_local]  '
               '"$request" $status $bytes_sent '
               '"$http_referer" "$http_user_agent"';
