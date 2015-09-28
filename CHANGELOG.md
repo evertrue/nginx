@@ -2,6 +2,32 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v5.0.0 (2015-09-28)
+----------------------
+
+* Prune a bunch of stuff that we don't use at EverTrue
+    - Remove support for source install
+    - Drop support for platforms that are not Debian/Ubuntu
+    - Drop support for init styles other than Upstart
+    - Drop passenger support
+* Fix some minor errors in the ServerSpec tests
+* Provide a default socketproxy app for testing
+* Switch to custom build of the nginx package (called `nginx-full`) to get [upstream check module](https://github.com/yaoweibin/nginx_upstream_check_module) support
+    - Use version when installing nginx package
+* Remove spec test to verify nginx start (which we no longer do)
+* Fix remaining incorrect namespacing (s/nginx/et_nginx/g) mostly in spec tests
+* Remove orphaned object package_install_opts from package recipe
+* Update the documentation to be more EverTrue specific
+    - Do not attempt to document every single attribute in the metadata
+* Update nginx Ohai plugin to new format
+* Add socketproxy to modules test
+* Renamed/moved recipes and templates to distinguish compile-time modules from other stuff
+* Stop populating the `node['nginx']['version']` field with Ohai (it creates confusion)
+* Move the package name to be installed to its own attributes file
+* Modernize kitchen yaml
+* Remove "which nginx" not_if from nginx package install
+* Update the kitchen cloud ami (to: `ubuntu-trusty-14.04-amd64-server-20150810`)
+
 et-v4.0.0 (2015-04-08)
 ----------------------
 

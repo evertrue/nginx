@@ -3,7 +3,7 @@ maintainer        'EverTrue, Inc.'
 maintainer_email  'devops@evertrue.com'
 license           'Apache 2.0'
 description       'Installs and configures nginx'
-version           '4.0.0'
+version           '5.0.0'
 
 recipe 'nginx', 'Installs nginx package and sets up configuration with ' \
                 'Debian apache style with sites-enabled/sites-available'
