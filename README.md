@@ -49,6 +49,7 @@ config file.
 - `node['nginx']['group]` - Group for Nginx.
 - `node['nginx']['port']` - Port for nginx to listen on.
 - `node['nginx']['binary']` - Path to the Nginx binary.
+- `node['nginx']['default_hostname']` - The `server_name` for the `default` server.
 - `node['nginx']['upstart']['foreground']` - Set this to true if you
   want upstart to run nginx in the foreground, set to false if you
   want upstart to detach and track the process via pid.
