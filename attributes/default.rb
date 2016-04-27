@@ -23,15 +23,16 @@
 # In order to update the version, the checksum attribute must be changed too.
 # This attribute is in the source.rb file, though we recommend overriding
 # attributes by modifying a role, or the node itself.
-default['nginx']['version']      = '1.4.6-2evertrue1.0'
-default['nginx']['port']         = '80'
-default['nginx']['dir']          = '/etc/nginx'
-default['nginx']['script_dir']   = '/usr/sbin'
-default['nginx']['log_dir']      = '/var/log/nginx'
-default['nginx']['log_dir_perm'] = '0750'
-default['nginx']['binary']       = '/usr/sbin/nginx'
-default['nginx']['default_root'] = '/var/www/nginx-default'
-default['nginx']['ulimit']       = '1024'
+default['nginx']['version']             = '1.4.6-2evertrue1.0'
+default['nginx']['port']                = '80'
+default['nginx']['dir']                 = '/etc/nginx'
+default['nginx']['script_dir']          = '/usr/sbin'
+default['nginx']['log_dir']             = '/var/log/nginx'
+default['nginx']['log_dir_perm']        = '0750'
+default['nginx']['binary']              = '/usr/sbin/nginx'
+default['nginx']['default_hostname']    = node['hostname']
+default['nginx']['default_root']        = '/var/www/nginx-default'
+default['nginx']['ulimit']              = '1024'
 
 default['nginx']['pid'] = '/var/run/nginx.pid'
 
