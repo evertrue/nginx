@@ -4,8 +4,12 @@ server {
 
   access_log  <%= node['nginx']['log_dir'] %>/localhost.access.log;
 
+  <% if node['nginx']['default_return_code'] -%>
+  return <%= node['nginx']['default_return_code'] %>;
+  <% else -%>
   location / {
     root   <%= node['nginx']['default_root'] %>;
     index  index.html index.htm;
   }
+  <% end -%>
 }

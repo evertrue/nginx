@@ -50,6 +50,7 @@ config file.
 - `node['nginx']['port']` - Port for nginx to listen on.
 - `node['nginx']['binary']` - Path to the Nginx binary.
 - `node['nginx']['default_hostname']` - The `server_name` for the `default` server.
+- `node['nginx']['default_return_code']` - If set, requests to `default_hostname` will return this instead of trying to load something. Example values are `404` or `301 https://$server_name$request_uri`.
 - `node['nginx']['upstart']['foreground']` - Set this to true if you
   want upstart to run nginx in the foreground, set to false if you
   want upstart to detach and track the process via pid.

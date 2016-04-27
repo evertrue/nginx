@@ -31,6 +31,7 @@ default['nginx']['log_dir']             = '/var/log/nginx'
 default['nginx']['log_dir_perm']        = '0750'
 default['nginx']['binary']              = '/usr/sbin/nginx'
 default['nginx']['default_hostname']    = node['hostname']
+default['nginx']['default_return_code'] = nil
 default['nginx']['default_root']        = '/var/www/nginx-default'
 default['nginx']['ulimit']              = '1024'
 
