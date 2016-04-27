@@ -2,6 +2,12 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v5.1.0 (2016-04-27)
+----------------------
+
+* Make it possible for the default server to return a response code instead of a page
+* Make it possible to configure the hostname for the default server
+
 et-v5.0.0 (2015-09-28)
 ----------------------
 
