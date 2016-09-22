@@ -9,7 +9,7 @@ recipe 'nginx', 'Installs nginx package and sets up configuration with ' \
                 'Debian apache style with sites-enabled/sites-available'
 
 depends 'apt',             '~> 2.2'
-depends 'ohai',            '~> 2.0'
+depends 'ohai',            '~> 4.1'
 
 supports 'debian'
 supports 'ubuntu'
