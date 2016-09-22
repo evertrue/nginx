@@ -2,6 +2,14 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v6.0.0 (2016-09-22)
+----------------------
+
+* **BREAKING** Bump Ohai version to 4.0
+* Stop checksumming GeoIP databases (seriously?)
+* Merge branch '2.7.x' of github.com:miketheman/nginx into integration (not directly, but that's not important right now)
+* Test exclusively on EC2
+
 et-v5.1.0 (2016-04-27)
 ----------------------
 
