@@ -2,6 +2,11 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v6.0.1 (2016-12-19)
+----------------------
+
+* Add original client IPs, precision timestamps, application keys, and authorization headers to nginx access logs
+
 et-v6.0.0 (2016-09-22)
 ----------------------
 
