@@ -2,6 +2,11 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v6.0.2 (2017-05-31)
+----------------------
+
+* Grab different custom nginx packages on different versions of Ubuntu
+
 et-v6.0.1 (2016-12-19)
 ----------------------
 
