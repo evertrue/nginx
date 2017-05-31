@@ -22,7 +22,7 @@ include_recipe 'apt::default'
 
 apt_repository 'nginx' do
   uri          node['nginx']['upstream_repository']
-  distribution 'stable'
+  distribution node['lsb']['codename']
   components   %w(main)
   key          'http://ops.evertrue.com.s3.amazonaws.com/debian-repo/evertrue.key'
 end
