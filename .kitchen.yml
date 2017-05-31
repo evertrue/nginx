@@ -18,14 +18,18 @@ transport:
 
 provisioner:
   name: chef_zero
+  run_list:
+  - recipe[apt]
 
 platforms:
 - name: ubuntu-14.04
   driver:
     tags:
       Name: default-et-nginx-ubuntu-1404
-  run_list:
-  - recipe[apt]
+- name: ubuntu-16.04
+  driver:
+    tags:
+      Name: default-et-nginx-ubuntu-1604
 
 suites:
   - name: default
