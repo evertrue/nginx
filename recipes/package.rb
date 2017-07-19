@@ -41,8 +41,10 @@ unless node['nginx']['log_dir'] == '/var/log/nginx' ||
   end
 end
 
-package node['nginx']['package']['name'] do
-  version node['nginx']['version']
+package node['nginx']['package']['names'] do
+  # This next bit is a reasonably concise way of generating the version array in the right format:
+  # https://docs.chef.io/resource_package.html#multiple-packages
+  version(node['nginx']['package']['names'].count.times.map { node['nginx']['version'] })
   notifies :reload, 'ohai[reload_nginx]', :immediately
 end
 

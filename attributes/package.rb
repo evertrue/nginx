@@ -1,1 +1,1 @@
-default['nginx']['package']['name'] = 'nginx-full'
+default['nginx']['package']['names'] = %w(nginx-common nginx-full)
