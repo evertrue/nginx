@@ -2,6 +2,11 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v6.0.3 (2017-07-20)
+----------------------
+
+* Specify both nginx-full and nginx-common packages so that Evertrue-specific version numbers get used to install both
+
 et-v6.0.2 (2017-05-31)
 ----------------------
 
