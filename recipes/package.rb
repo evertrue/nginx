@@ -41,6 +41,13 @@ unless node['nginx']['log_dir'] == '/var/log/nginx' ||
   end
 end
 
+node['nginx']['package']['names'].each do |pkg_name|
+  apt_preference pkg_name do
+    pin "version #{node['nginx']['version']}"
+    pin_priority '700'
+  end
+end
+
 package node['nginx']['package']['names'] do
   # This next bit is a reasonably concise way of generating the version array in the right format:
   # https://docs.chef.io/resource_package.html#multiple-packages
