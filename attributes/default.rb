@@ -27,7 +27,7 @@ default['nginx']['version'] =
   value_for_platform(
     :ubuntu => {
       '14.04' => '1.4.6-2evertrue2.0',
-      '16.04' => '1.10.0-1evertrue2.0'
+      '16.04' => '1.10.3-1evertrue2.0'
     }
   )
 
