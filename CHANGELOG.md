@@ -2,6 +2,12 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v6.0.4 (2017-08-01)
+----------------------
+
+* Pin nginx package so that it is not auto-updated by "unattended-updates"
+* Bump nginx package to latest for 16.04
+
 et-v6.0.3 (2017-07-20)
 ----------------------
 
