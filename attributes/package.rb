@@ -1,1 +1,1 @@
-default['nginx']['package']['names'] = %w(nginx-common nginx-full)
+default['nginx']['package']['names'] = %w(nginx-common nginx-extras)
