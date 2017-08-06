@@ -2,6 +2,11 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v6.1.0 (2017-08-06)
+----------------------
+
+* Switch to installing nginx-extras instead of nginx-full to get access to Lua extensions
+
 et-v6.0.4 (2017-08-01)
 ----------------------
 
