@@ -2,6 +2,11 @@ nginx Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the nginx cookbook.
 
+et-v6.1.1 (2019-02-06)
+----------------------
+
+* added $request_time to nginx log format
+
 et-v6.1.0 (2017-08-06)
 ----------------------
 
